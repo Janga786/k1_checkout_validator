@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <world name="arm_collision">
+    <physics name="p" type="dart">
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 5 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <direction>-0.4 0.3 -0.9</direction>
+    </light>
+
+    <model name="ground">
+      <static>true</static>
+      <link name="l">
+        <collision name="c"><geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry></collision>
+        <visual name="v"><geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry>
+          <material><ambient>0.3 0.3 0.32 1</ambient><diffuse>0.4 0.4 0.42 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- the box the QR is mounted on: solid, with collision -->
+    <model name="qr_box">
+      <static>true</static>
+      <pose>0.40 0.20 0.425 0 0 0</pose>
+      <link name="box">
+        <collision name="c"><geometry><box><size>0.40 0.40 0.85</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.40 0.40 0.85</size></box></geometry>
+          <material><ambient>0.55 0.45 0.35 1</ambient><diffuse>0.62 0.5 0.4 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <!-- the QR panel on the box's near (-x) face -->
+    <model name="qr_panel">
+      <static>true</static>
+      <pose>0.198 0.20 0.789 0 0 0</pose>
+      <link name="p">
+        <visual name="v"><geometry><box><size>0.01 0.12 0.12</size></box></geometry>
+          <material><ambient>0.05 0.05 0.05 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <include><uri>model://k1_arm</uri></include>
+  </world>
+</sdf>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!-- Self-collision ground-truth world: the fixed-base K1 with real body+arm mesh
+     collisions + contact sensors. No render sensors (contact is physics) -> no GPU.
+     Drive the arm to a config via /arm/jN, read /selfcontact to see if gz reports an
+     arm<->body collision, and compare to the numpy self_collision check. -->
+<sdf version="1.9">
+  <world name="selftest">
+    <physics name="dart" type="dart"><max_step_size>0.002</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact"/>
+    <include><uri>model://k1_selfcoll</uri></include>
+  </world>
+</sdf>

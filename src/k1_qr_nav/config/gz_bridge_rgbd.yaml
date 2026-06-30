@@ -1,0 +1,61 @@
+# ros_gz parameter_bridge for the CAMERA-ONLY (RGBD) nav world (camera_nav.sdf).
+# RGB + depth + camera_info + clock + odom OUT of gz; cmd_vel IN.
+# gz /tf is deliberately NOT bridged (Pose_V has out-of-order stamps -> tf2
+# TF_OLD_DATA); odom_tf re-publishes a clean odom->base_link from /odom instead.
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ
+
+- ros_topic_name: "/odom"
+  gz_topic_name: "/odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_camera/image"
+  gz_topic_name: "/head_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_camera/depth_image"
+  gz_topic_name: "/head_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/head_camera/camera_info"
+  gz_topic_name: "/head_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# articulated left-arm joint position commands (arm_scan -> gz JointPositionController)
+- ros_topic_name: "/arm/j0"
+  gz_topic_name: "/arm/j0"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ
+- ros_topic_name: "/arm/j1"
+  gz_topic_name: "/arm/j1"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ
+- ros_topic_name: "/arm/j2"
+  gz_topic_name: "/arm/j2"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ
+- ros_topic_name: "/arm/j3"
+  gz_topic_name: "/arm/j3"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "gz.msgs.Double"
+  direction: ROS_TO_GZ

@@ -1,0 +1,17 @@
+# colcon / ament build artifacts
+build/
+install/
+log/
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ROS run logs
+.ros/
+
+# editor / OS
+*.swp
+.DS_Store
