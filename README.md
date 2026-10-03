@@ -1,8 +1,13 @@
-# k1_qr_nav — Booster K1 cart-seek (reactive visual servo)
+# k1_checkout_validator — Booster K1 cart-seek (reactive visual servo)
 
 A ROS 2 (Humble) stack for the **Booster K1 humanoid**: detect a utility cart with the head
-camera, walk to it and stop ~1 m away, using the Booster SDK velocity command (`Move`). Built
-to be safe to supervise (gated start, hard-clamped speeds, stops that keep the robot standing).
+camera, walk to it and stop ~1 m away, using the Booster SDK velocity command (`Move`). An optional
+`orbit` mode then circles the cart at a fixed standoff (off by default). Built to be safe to
+supervise (gated start, hard-clamped speeds, stops that keep the robot standing).
+
+The ROS package is `src/k1_qr_nav`. It started as a QR/barcode-seeking project, so the repo also
+holds earlier modules (QR/barcode goal seeking, arm reach and scan, Gazebo and Nav2 simulation
+launches) that the cart-seek path does not depend on.
 
 ## How it works
 
@@ -30,6 +35,13 @@ head camera ──HTTP──▶ cart_detect_server (YOLO-World)  ──▶  cart
 
 The head-camera HTTP bridge (`/booster_video_stream → :8080`) comes up via `bringup_camera.sh`
 (lives in the `k1-vlm-navigation` deploy tree on the robot host).
+
+Orbit after arriving: `./run_seek_cart_reactive.sh orbit:=true` (tangential speed capped at 0.10 m/s).
+
+## Configuration
+
+Scripts and defaults reference the robot host's layout (`/home/boosterk1/...`, the K1 camera at
+`192.168.10.102`). Adjust the paths and addresses for your own setup before running.
 
 ## Tests (offline, no robot)
 
