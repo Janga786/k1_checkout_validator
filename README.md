@@ -51,3 +51,11 @@ python3 src/k1_qr_nav/test/test_cart_track.py      # drift-safety: lost-stop + s
 ```
 
 See `DEBUG_REPORT.md` for the full design audit and `SEEK_CART.md` for details.
+
+## Provenance and status
+
+Built for the real K1 in the Fort Lewis College lab, with AI coding agents assisting the
+implementation under my direction (`DEBUG_REPORT.md` is the audit of that work). Live cart-seek
+sessions were operator-supervised on the physical robot in July 2026; this repository preserves
+the code, tests, and design audit rather than run logs, so the committed evidence here is the
+offline test suite and the audit, not hardware recordings.
