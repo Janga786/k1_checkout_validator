@@ -23,7 +23,7 @@ setup(
     maintainer="boosterk1",
     maintainer_email="jangarabliss@gmail.com",
     description="SLAM + Nav2 navigate-to-QR for the Booster K1, with a lightweight 2-D test sim.",
-    license="Apache-2.0",
+    license="MIT",
     entry_points={
         "console_scripts": [
             "mini_sim = k1_qr_nav.mini_sim:main",

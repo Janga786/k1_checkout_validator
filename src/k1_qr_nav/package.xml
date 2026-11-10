@@ -5,7 +5,7 @@
   <version>0.1.0</version>
   <description>SLAM + Nav2 navigate-to-QR for the Booster K1, with a lightweight 2-D test sim.</description>
   <maintainer email="jangarabliss@gmail.com">boosterk1</maintainer>
-  <license>Apache-2.0</license>
+  <license>MIT</license>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
