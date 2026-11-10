@@ -1,6 +1,6 @@
 # Booster K1 Cart-Seek — Debug Report (static audit + fixes)
 
-_Generated 2026-06-29. Audit: 116 agents, 36 candidate findings, **29 confirmed** (>=2/3 adversarial verifiers), 7 refuted._
+_Generated 2026-06-29. Static audit: 36 candidate findings, **29 confirmed**, 7 refuted._
 
 ## Decision: pivoted Nav2/SLAM → reactive visual-servo
 
